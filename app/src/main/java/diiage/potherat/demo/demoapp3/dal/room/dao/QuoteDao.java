@@ -18,6 +18,8 @@ public interface QuoteDao extends QuoteRepository {
     PagingSource<Integer, Quote> getAll();
     @Query("SELECT * FROM Quote WHERE id = :id")
     LiveData<Quote> getById(Long id);
+    @Query("SELECT COUNT() FROM Quote")
+    LiveData<Integer> getCountQuote();
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Long create(Quote quote);
     @Update
